@@ -1,13 +1,14 @@
 from datetime import datetime
 import json
 import os
-from pathlib import Path
+from pathlib import Path, PosixPath
 import socket
 
 import keyring
-
+from outagedetector import log_f
 from outagedetector import pushnotification as push
 from outagedetector import send_mail as mail
+
 
 
 def check_internet_connection():
@@ -26,6 +27,7 @@ def extract_run_periodicity(scheduled_now, last_scheduled, current_time, last_po
         return int((current_time - last_power_time).total_seconds() / 60)
     else:
         return last_period
+
 
 
 def check_power_and_internet(run, notification):
@@ -175,4 +177,4 @@ def check_power_and_internet(run, notification):
     print("Script has run at {}. Internet connected: {}. Just booted: {}.".format(current_timestring,
                                                                                   internet_connected,
                                                                                   just_booted))
-
+    log_f.separate_log_file(current_timestamp, internet_connected, just_booted)
