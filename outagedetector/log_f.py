@@ -9,7 +9,7 @@ def separate_log_file(current_timestamp, internet_connected, just_booted):
 
     file_name = now.strftime("%Y-%m-%d")
     log_line_date = now.strftime("%H:%M:%S")
-    l = f"Script has run at {log_line_date}. Internet connected: {internet_connected}. Just booted: {just_booted}.\n"
+    l = f"Script has run at {log_line_date}. Internet connected: {internet_connected}. Just booted: {just_booted_message}.\n"
     file = Path.home().joinpath(f'.config/outagedetector/{file_name}.log')
     # print(f"Writing to {file}")
     with open(file, 'a+') as f:
