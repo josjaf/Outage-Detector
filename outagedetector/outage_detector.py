@@ -13,7 +13,8 @@ from outagedetector import send_mail as mail
 
 def check_internet_connection():
     try:
-        socket.create_connection(("www.google.com", 80))    # if connection to google fails, we assume internet is down
+        sock = socket.create_connection(("www.google.com", 80))    # if connection to google fails, we assume internet is down
+        sock.close()
         return True
     except OSError:
         pass
