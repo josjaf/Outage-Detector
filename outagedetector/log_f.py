@@ -1,6 +1,10 @@
 import pytz
 from pathlib import Path
 def separate_log_file(current_timestamp, internet_connected, just_booted):
+    if just_booted:
+        just_booted_message = "YES"
+    else:
+        just_booted_message = "NO"
     now = current_timestamp.now(pytz.timezone('America/New_York'))
 
     file_name = now.strftime("%Y-%m-%d")
