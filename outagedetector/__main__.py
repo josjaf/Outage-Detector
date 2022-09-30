@@ -13,7 +13,6 @@ def main(sysargv=None):
                         choices={"mail", "notification", "ifttt"})
 
     args = parser.parse_args()
-
     if args.init:
         config.initialize()
     elif args.run and args.notify:
