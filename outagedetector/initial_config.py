@@ -20,6 +20,7 @@ def curate_input(shown_message, expected_values):
         return curate_input("You need to input one of the following: {}. Try again! ".format(expected_values),
                             expected_values)
 
+
 def initialize():
     config_path = os.path.join(os.path.expanduser("~"), ".config/outagedetector")
     if not os.path.exists(config_path):
@@ -139,7 +140,7 @@ def initialize():
                 print("No internet, try reconnecting and running the script again!")
                 exit(1)
         json_data["ifttt_event"] = ifttt_name
-    
+
     json_data["house_address"] = input("Enter a description of the run location (used to tell you in the "
                                        "{} where the outage happened): ".format(notification_type))
     with open(os.path.join(config_path, 'config.json'), 'w+') as json_file:
