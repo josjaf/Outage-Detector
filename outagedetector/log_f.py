@@ -8,7 +8,7 @@ def separate_log_file(current_timestamp, internet_connected, just_booted, ping_t
     now = current_timestamp.now(pytz.timezone('America/New_York'))
 
     file_name = now.strftime("%Y-%m-%d")
-    log_line_date = now.strftime("%H:%M:%S")
+    log_line_date = now.strftime("%H:%M:%S%Z")
     l = f"Script has run at {log_line_date}. Internet connected: {internet_connected}. Just booted: {just_booted_message}. Ping Time: {ping_time}\n"
     dir = Path.home().joinpath(f'.config/outagedetector/')
     Path.mkdir(dir,exist_ok=True)
